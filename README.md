@@ -158,6 +158,80 @@ Per aggiungere nuovi script:
 
 La directory `SCRIPT SODDI/` contiene la collezione originale completa. **Non modificare** questa directory - serve come backup storico.
 
+## Roadmap: Testing e Refactoring Script
+
+### Obiettivo
+Testare sistematicamente ogni script del repository per:
+- ✅ **Verificare funzionalità**: Esecuzione senza errori
+- 🔧 **Migliorare codice**: Leggibilità, efficienza, best practices
+- 📚 **Documentare**: Aggiungere esempi d'uso e spiegazioni dettagliate
+- 🎨 **Standardizzare**: Uniformare stile e convenzioni
+- 🧪 **Validare**: Verificare correttezza statistica
+
+### Strategia di Testing
+
+#### Fase 1: Templates (Priorità Alta)
+Script riutilizzabili da testare per primi:
+1. `templates/anova/` - 7 script
+2. `templates/ttest/` - 3 script
+3. `templates/boxplot/` - 9 script
+4. `templates/pca/` - 5 script
+5. `templates/regression/` - 10 script
+6. `templates/correlation/` - 2 script
+7. Altri template (power analysis, random forest, etc.)
+
+#### Fase 2: Projects (Validazione)
+Script su progetti reali per validare workflow completi:
+- `projects/mild_ad/`
+- `projects/pea_mice/`
+- `projects/marina_macrophages/`
+- Altri progetti specifici
+
+### Processo per Ogni Script
+
+1. **Setup**: Creare dataset di esempio sintetico
+2. **Esecuzione**: Testare lo script end-to-end
+3. **Debug**: Risolvere errori e warning
+4. **Refactoring**:
+   - Migliorare nomi variabili
+   - Ottimizzare codice ridondante
+   - Aggiungere validazione input
+   - Separare logica da visualizzazione
+5. **Documentazione**:
+   - Header con descrizione e autore
+   - Commenti inline chiari
+   - Esempio d'uso nel README
+6. **Testing**: Verificare con dati edge-case
+
+### Metriche di Qualità
+
+Ogni script testato deve avere:
+- [ ] Nessun errore di esecuzione
+- [ ] Nessun warning critico
+- [ ] Commenti esplicativi adeguati
+- [ ] Output riproducibile
+- [ ] Presupposti statistici verificati
+- [ ] Grafici publication-ready
+
+### Status Tracking
+
+Script testati e validati verranno marcati nei README di categoria con badge:
+- ✅ **Testato**: Funziona correttamente
+- 🔧 **Refactored**: Codice migliorato
+- 📚 **Documentato**: README aggiornato
+- 🚧 **In Progress**: Attualmente in lavorazione
+- ⚠️ **Issues**: Problemi noti da risolvere
+
+### Prossimi Passi
+
+1. Iniziare da `templates/ttest/01_ttest_unpaired.R`
+2. Creare dataset sintetico di test
+3. Eseguire e documentare risultati
+4. Iterare su tutti i template
+5. Aggiornare progressivamente i README di categoria
+
+---
+
 ## Supporto
 
 Per domande sull'uso di Claude Code con questo repository, consulta [CLAUDE.md](CLAUDE.md).
