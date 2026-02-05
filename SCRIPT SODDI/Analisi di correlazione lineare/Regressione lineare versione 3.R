@@ -2,20 +2,20 @@
 ###### VERSIONE 3.0 --- 13 marzo 2023
 
 ###### Librerie necessarie
-# for the graph
+# per il grafico
 library(ggplot2)
 library(ggprism)
 library(ggpubr)
 library(ggnewscale)
 library(matrixStats)
 library(drc)
-# just for manipulating the data.frame
+# solo per manipolare il data.frame
 library(dplyr)
 library(tidyr)
 library(rstatix)
 
-# construct the data.frame, log10 transform the agonist concentration
-# convert the data.frame to long format, then remove any rows with NA
+# costruisce il data.frame, trasforma in log10 la concentrazione dell'agonista
+# converte il data.frame in formato "long", quindi rimuove eventuali righe con NA
 
 
 dati <- curva_nitrito
@@ -54,12 +54,12 @@ p <- ggplot(data=dati, aes(x = x, y = mean, group = Treatment, colour= Treatment
   #  geom_errorbar(aes(ymin=mean-stdev, ymax=mean+stdev), width=0.05, position=position_dodge(do))+ #### DS
   geom_errorbar(aes(ymin=mean-stdev, ymax=mean+stdev), width=2, 
                 position=position_dodge(0)
-                #               position = "identity"
-  )+  #### SEM
+                #               position = "identity" (posizione identica)
+  )+  #### Errore standard (SEM)
   
 #geom_smooth(aes(colour = Treatment), method = "nls", formula = retta, se = FALSE,linewidth = 0.5 ,method.args = list(start = list(m = 1, q = 1), algorithm = "default"))+
 
-  geom_smooth(aes(colour = Treatment), method = "lm", se = FALSE, linewidth = 0.5)+  ####Linear fitting; spessore linea e colore
+  geom_smooth(aes(colour = Treatment), method = "lm", se = FALSE, linewidth = 0.5)+  #### Fitting lineare; spessore linea e colore
   #geom_point(position=position_dodge(do), size=2)+ #### dimensione e colore dei punti e delle barre di errore
   stat_regline_equation(label.y = c(0.75, 0.7, 0.65), #### label.y definisce la posizione dell'equazione lungo l'asse y delle rette interpolate: (y1, y2, y3)
                         aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~~")))+  
@@ -106,9 +106,9 @@ p <- ggplot(data=dati, aes(x = x, y = mean, group = Treatment, colour= Treatment
     axis.text.y = element_text(size=sizeT, angle = 0, hjust = 1, face="bold", color="black"),  #decide dimensione e inclinazione del nome dei gruppi sulle ordinate
     axis.title.x = element_text(size=sizeT, face="bold", colour="black"), # Lettering titolo asse x
     axis.title.y = element_text(size=sizeT, face="bold", colour="black"), # Lettering titolo asse y
-    axis.ticks.x = element_line(size=1, color="black"),    # Change x axis ticks only
-    axis.ticks.y = element_line(size=1, color="black"),    # Change y axis ticks only
-    #    axis.ticks.length = unit(3, "pt") # Change the length of tick marks
+    axis.ticks.x = element_line(size=1, color="black"),    # Cambia solo i tick dell'asse x
+    axis.ticks.y = element_line(size=1, color="black"),    # Cambia solo i tick dell'asse y
+    #    axis.ticks.length = unit(3, "pt") # Cambia la lunghezza dei segni di graduazione
     legend.title =  element_blank(),
     legend.text = element_text(size=14, angle = 0, hjust = 1, face="bold", colour="#00167B"),
     legend.position = c(0.01, 1),             #### coordinate legenda (x e y)
@@ -121,7 +121,3 @@ p
 
 
 ?stat_regline_equation
-
-
-
-
