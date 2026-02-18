@@ -8,8 +8,8 @@ library(dplyr)
 library(reshape2)
 
 
-options(scipen=999) #  Esprime i numeri in formato fisso
-sizeT <- 12         #  Dimensione del font del testo nel grafico
+options(scipen = 999) # Esprime i numeri in formato fisso
+sizeT <- 12         # Dimensione del font del testo nel grafico
 
 # Dataset classico, con ogni variabile per colonna
 dati_completi <- Dan
@@ -34,7 +34,7 @@ dati_completi$Genotype <- as.factor(dati_completi$Genotype)
 dati_completi$Genotype <- ordered(dati_completi$Genotype,
                                   levels = c("Wt", "Tg"))
 #### Se serve rimuovere oulier
-dati_completi = dati_completi[ ,-c(1,2)]
+dati_completi <- dati_completi[, -c(1, 2)]
 
 #### Se serve rimuovere osservazioni di un certo gruppo
 dati_completi <- subset(dati_completi, Genotype != "Wt")
@@ -84,8 +84,10 @@ p <- ggboxplot(
   , add.params =list(size = 0.6)
 ) +
   stat_compare_means(
-    comparisons = list(c("CTRL", "PEA")), # Qui si può decidere le coppie su cui fare la significatività statistica in base al numero di trattamenti
-    label = "p.signif", size = 5, vjust = 0.2) + #label: significatività: decide se mostrare il numero o l'asterisco, size: la taglia e vjust: la sua posizione rispetto alla graffetta 
+    comparisons = list(c("CTRL", "PEA")), # Qui si può decidere le coppie su cui fare la significatività statistica 
+    #in base al numero di trattamenti
+    label = "p.signif", size = 5, vjust = 0.2) + #label: significatività: decide se mostrare il numero o l'asterisco, 
+    #size: la taglia e vjust: la sua posizione rispetto alla graffetta 
   labs(title="",                           #se serve il titolo
        x = "Group",                        #nome delle ascisse
        y = "3-NT/actin") +                 #nome delle ordinate
@@ -150,10 +152,7 @@ geom_bracket(data = stat.test,     #Graffette di significatività
              bracket.nudge.y = 0,
              bracket.shorten = 0,
              family = "",
-             size = 0.3)+
-
-
-
+             size = 0.3)
 
 
 
