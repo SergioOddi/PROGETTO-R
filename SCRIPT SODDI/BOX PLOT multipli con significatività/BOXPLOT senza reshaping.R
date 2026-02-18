@@ -68,7 +68,7 @@ dati <- dati_completi
 
 ######### Boxplot FC
 p <- ggboxplot(
-  dati,                   # dataset
+  dati,           # dataset
   x = "Group",    # Variabile indipendente 
   y = "FC",        # Nome della variabile dipendente
   facet.by = "Age",      # Se più di un gruppo
